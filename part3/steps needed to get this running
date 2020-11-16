@@ -1,0 +1,40 @@
+1. create algorithm
+
+2. install source code:
+    import Algorithmia
+    import nltk
+    nltk.download('wordnet')
+
+    from nltk.stem import WordNetLemmatizer
+    from nltk.tokenize import word_tokenize
+    import re
+    # from nltk.util import ngrams
+    from nltk.util import everygrams
+
+    from nltk import download
+
+    download('punkt')
+    download('stopwords')
+
+    lemmatizer = WordNetLemmatizer()
+
+    def extract_features(document):
+        words = word_tokenize(document)
+        lemmas = [str(lemmatizer.lemmatize(w)) for w in words if w not in stopwords_eng and w not in punctuation]
+        document = " ".join(lemmas)
+        document = document.lower()
+        document = re.sub(r'[^a-zA-Z0-9\s]', ' ', document)
+        words = [w for w in document.split(" ") if w!="" and w not in stopwords_eng and w not in punctuation]
+        return [str('_'.join(ngram)) for ngram in list(everygrams(words, max_len=3))]
+
+    print(extract_features("Hello world, corpuses calling!"))
+
+    # API calls will begin at the apply() method, with the request body passed as 'input'
+    # For more details, see algorithmia.com/developers/algorithm-development/languages
+    def apply(input):
+        return extract_features(input)
+
+
+3. upload the pickle file
+
+4. define the input and output
