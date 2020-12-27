@@ -113,3 +113,4 @@ venv.bak/
 
 # notebook checkpoints
 */.ipynb_checkpoints
+/part3/nltk_data/
