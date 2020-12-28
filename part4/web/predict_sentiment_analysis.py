@@ -1,11 +1,11 @@
-
 import nltk
-nltk.download('wordnet')
-nltk.download('stopwords')
+from nltk import download
+download('punkt')
+download('stopwords')
+download('wordnet')
 
 from nltk.corpus import stopwords
 from string import punctuation
-
 
 stopwords_eng = stopwords.words('english')
 
