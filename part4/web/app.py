@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask import request
 from predict_sentiment_analysis import get_sentiment
 
 app = Flask(__name__)
@@ -15,6 +16,7 @@ def predict():
         input = request.get_json(force=True)['input']
     if not input:
         return 'No input value found'
+
     return get_sentiment(input)
 
 if __name__ == '__main__':

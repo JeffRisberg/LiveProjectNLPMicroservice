@@ -1,7 +1,4 @@
-wheel
-altair
-nltk
-numpy
-pandas
-scikit-learn
-scipy
+Flask==0.12
+nltk==3.5
+
+

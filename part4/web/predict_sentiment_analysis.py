@@ -1,24 +1,20 @@
 
 import nltk
 nltk.download('wordnet')
+nltk.download('stopwords')
 
-from nltk import data
 from nltk.corpus import stopwords
+from string import punctuation
+
+
+stopwords_eng = stopwords.words('english')
+
 from string import punctuation
 from nltk.stem import WordNetLemmatizer
 import re
 from nltk.util import everygrams
 import pickle
 from nltk.tokenize import word_tokenize
-
-#from nltk import download
-download('punkt',download_dir=data.path[0])
-download('stopwords',download_dir=data.path[0])
-download('wordnet',download_dir=data.path[0])
-# #THEN remove the zip files!
-
-data.path=['nltk_data']
-stopwords_eng = stopwords.words("english")
 
 lemmatizer = WordNetLemmatizer()
 
@@ -36,7 +32,6 @@ def bag_of_words(words):
     for w in words:
         bag[w] = bag.get(w,0)+1
     return bag
-
 
 import pickle
 import sys
